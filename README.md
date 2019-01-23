@@ -1,2 +1,4 @@
 # jpi-error
-Class for JPI standard and application-defined errors.
+Error class for JPI standard and application-defined errors.
+
+Work in progress.

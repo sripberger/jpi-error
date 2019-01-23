@@ -1,7 +1,7 @@
 {
   "name": "jpi-error",
   "version": "0.0.0",
-  "description": "Class for JPI standard and application-defined errors.",
+  "description": "Error class for JPI standard and application-defined errors.",
   "author": "Steve Ripberger",
   "license": "MIT",
   "repository": "github:sripberger/jpi-error",
