@@ -150,6 +150,26 @@ describe('JpiError', function() {
 		});
 	});
 
+	describe('::register', function() {
+		it('registers the provided error info, keyed by name', function() {
+			const info = { foo: {}, bar: {} };
+			sinon.stub(TestError, '_registerCode');
+
+			TestError.register(info);
+
+			expect(TestError._registerCode).to.be.calledTwice;
+			expect(TestError._registerCode).to.always.be.calledOn(TestError);
+			expect(TestError._registerCode).to.be.calledWith(
+				'foo',
+				sinon.match.same(info.foo)
+			);
+			expect(TestError._registerCode).to.be.calledWith(
+				'bar',
+				sinon.match.same(info.bar)
+			);
+		});
+	});
+
 	describe('::_registerCode', function() {
 		const existingName = 'EXISTING_ERROR';
 		const existingCode = 0;
