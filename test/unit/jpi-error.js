@@ -117,6 +117,39 @@ describe('JpiError', function() {
 		});
 	});
 
+	describe('#toObject', function() {
+		const code = 42;
+		let err, obj;
+
+		beforeEach(function() {
+			// Manually register an error code to create an instance.
+			TestError[code] = { message: 'Omg bad error!' };
+			err = new TestError(code);
+			obj = { foo: 'bar' };
+			sinon.stub(utils, 'convertErrorToObject').returns(obj);
+		});
+
+		afterEach(function() {
+			delete TestError[code];
+		});
+
+		it('converts instance to a plain object', function() {
+			const result = err.toObject();
+
+			expect(utils.convertErrorToObject).to.be.calledOnce;
+			expect(utils.convertErrorToObject).to.be.calledWith(err, false);
+			expect(result).to.equal(obj);
+		});
+
+		it('supports includeStacks argument', function() {
+			const result = err.toObject(true);
+
+			expect(utils.convertErrorToObject).to.be.calledOnce;
+			expect(utils.convertErrorToObject).to.be.calledWith(err, true);
+			expect(result).to.equal(obj);
+		});
+	});
+
 	describe('::_registerCode', function() {
 		const existingName = 'EXISTING_ERROR';
 		const existingCode = 0;
