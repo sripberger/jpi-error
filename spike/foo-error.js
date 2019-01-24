@@ -1,4 +1,4 @@
-import JpiError from './jpi-error';
+import JpiError from '../lib';
 
 export default class FooError extends JpiError {}
 
