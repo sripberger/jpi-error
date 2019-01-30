@@ -312,9 +312,9 @@ describe('JpiError', function() {
 		// Ensure registration fails if name is already in use.
 		expect(() => {
 			TestError.register({ FOO_ERROR: { code: 13 } });
-		}).to.throw('Error name FOO_ERROR is already in use.');
+		}).to.throw('Error name \'FOO_ERROR\' is already in use.');
 		expect(() => {
 			TestError.register({ SERVER_ERROR: 13 });
-		}).to.throw('Error name SERVER_ERROR is already in use.');
+		}).to.throw('Error name \'SERVER_ERROR\' is already in use.');
 	});
 });

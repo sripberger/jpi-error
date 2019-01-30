@@ -223,7 +223,7 @@ describe('JpiError', function() {
 		it('throws if name is already in use', function() {
 			expect(() => {
 				TestError._registerCode(existingName, { code, message });
-			}).to.throw(`Error name ${existingName} is already in use`);
+			}).to.throw(`Error name '${existingName}' is already in use`);
 			expect(TestError).to.not.have.property(name);
 			expect(TestError).to.not.have.property(code);
 		});
