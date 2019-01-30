@@ -22,10 +22,15 @@ describe('JpiError', function() {
 			delete JpiError[code];
 		});
 
-		it('extends Error with code, cause, and data', function() {
+		it('extends Error', function() {
 			const err = new TestError(code, message, cause, data);
 
 			expect(err).to.be.an.instanceof(Error);
+		});
+
+		it('supports signature with code, message, cause, and data', function() {
+			const err = new TestError(code, message, cause, data);
+
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(message);
 			expect(err.cause).to.equal(cause);
@@ -35,7 +40,6 @@ describe('JpiError', function() {
 		it('supports signature with no data', function() {
 			const err = new TestError(code, message, cause);
 
-			expect(err).to.be.an.instanceof(Error);
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(message);
 			expect(err.cause).to.equal(cause);
@@ -45,7 +49,6 @@ describe('JpiError', function() {
 		it('supports signature with no cause', function() {
 			const err = new TestError(code, message, data);
 
-			expect(err).to.be.an.instanceof(Error);
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(message);
 			expect(err.data).to.equal(data);
@@ -55,7 +58,6 @@ describe('JpiError', function() {
 		it('supports signature with no message', function() {
 			const err = new TestError(code, cause, data);
 
-			expect(err).to.be.an.instanceof(Error);
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(defaultMessage);
 			expect(err.cause).to.equal(cause);
@@ -65,7 +67,6 @@ describe('JpiError', function() {
 		it('supports signature with code and message only', function() {
 			const err = new TestError(code, message);
 
-			expect(err).to.be.an.instanceof(Error);
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(message);
 			expect(err.cause).to.be.null;
@@ -75,7 +76,6 @@ describe('JpiError', function() {
 		it('supoprts signature with code and cause only', function() {
 			const err = new TestError(code, cause);
 
-			expect(err).to.be.an.instanceof(Error);
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(defaultMessage);
 			expect(err.cause).to.equal(cause);
@@ -85,7 +85,6 @@ describe('JpiError', function() {
 		it('supports signature with code and data only', function() {
 			const err = new TestError(code, data);
 
-			expect(err).to.be.an.instanceof(Error);
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(defaultMessage);
 			expect(err.cause).to.be.null;
@@ -95,7 +94,6 @@ describe('JpiError', function() {
 		it('supports signature with code only', function() {
 			const err = new TestError(code);
 
-			expect(err).to.be.an.instanceof(Error);
 			expect(err.code).to.equal(code);
 			expect(err.message).to.equal(defaultMessage);
 			expect(err.cause).to.be.null;
