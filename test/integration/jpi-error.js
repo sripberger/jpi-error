@@ -253,6 +253,12 @@ describe('JpiError', function() {
 		});
 	});
 
+	it('has isJpiError property for easy identification of caught errors', function() {
+		const err = new JpiError(JpiError.SERVER_ERROR);
+
+		expect(err.isJpiError).to.be.true;
+	});
+
 	it('supports error code references through subclasses', function() {
 		class TestError extends JpiError {}
 

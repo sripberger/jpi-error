@@ -115,6 +115,26 @@ describe('JpiError', function() {
 		});
 	});
 
+	describe('@isJpiError', function() {
+		let err;
+
+		beforeEach(function() {
+			err = new TestError(42);
+		});
+
+		it('returns true', function() {
+			const err = new TestError(42);
+
+			expect(err.isJpiError).to.be.true;
+		});
+
+		it('is read only', function() {
+			expect(() => {
+				err.isJpiError = false;
+			}).to.throw('Cannot set property isJpiError');
+		});
+	});
+
 	describe('#toObject', function() {
 		const code = 42;
 		let err, obj;
