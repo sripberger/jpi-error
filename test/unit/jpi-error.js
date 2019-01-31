@@ -123,8 +123,6 @@ describe('JpiError', function() {
 		});
 
 		it('returns true', function() {
-			const err = new TestError(42);
-
 			expect(err.isJpiError).to.be.true;
 		});
 
